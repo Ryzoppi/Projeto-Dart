@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+
+class SidePanel extends StatelessWidget {
+  const SidePanel({super.key});
+
+  static const String logo = 'assets/images/logo.png';
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: Column(
+        children: [
+          const Spacer(),
+          Image.asset(logo, height: 120),
+          const SizedBox(height: 10),
+          const Text(
+            'GeoQuest Desktop',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            'Encontre tesouros escondidos',
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          const Spacer(),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 20),
+            child: Text(
+              'Por: Allan, Carlos, Hugo, Ryu, Renan e Emanuelly. Turma BCC-A 5º Termo',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white, fontSize: 12),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
