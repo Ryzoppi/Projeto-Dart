@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/models/geocache.dart';
-import '../widgets/cachedetail.dart';
-import '../widgets/cachelistitem.dart';
+import '../widgets/cache_detail.dart';
+import '../widgets/cache_list_item.dart';
 
 // ============= SCREEN PRINCIPAL =============
 class HomepageScreen extends StatefulWidget {

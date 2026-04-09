@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/starrating.dart';
-import '../widgets/terrainindicator.dart';
+import 'star_rating.dart';
+import 'terrain_indicator.dart';
 import '../../domain/models/geocache.dart';
 
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../domain/models/geocache.dart';
-import '../widgets/difficultybadge.dart';
+import 'difficulty_badge.dart';
 
 /// Widget para item de cache na lista
 class CacheListItem extends StatelessWidget {
