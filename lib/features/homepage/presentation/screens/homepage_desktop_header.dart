@@ -15,6 +15,21 @@ class HomepageHeader extends StatefulWidget {
 class _HomepageHeaderState extends State<HomepageHeader> {
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 768;
+
+    if (isMobile) {
+      return _HomepageHeaderMobile();
+    } else {
+      return _HomepageHeaderDesktop();
+    }
+  }
+}
+
+class _HomepageHeaderDesktop extends StatelessWidget {
+  const _HomepageHeaderDesktop();
+
+  @override
+  Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: 80.0,
       backgroundColor: const Color.fromARGB(255, 2, 61, 138),
@@ -30,7 +45,8 @@ class _HomepageHeaderState extends State<HomepageHeader> {
           const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min, // Importante para não quebrar na AppBar
+            mainAxisSize:
+                MainAxisSize.min, // Importante para não quebrar na AppBar
             children: [
               const Text(
                 "GeoQuest Desktop",
@@ -77,7 +93,7 @@ class _HomepageHeaderState extends State<HomepageHeader> {
             color: Colors.blue[800],
             borderRadius: BorderRadius.circular(8),
           ),
-          child: TextButton.icon( // TextButton.icon é mais simples que Row dentro de ElevatedButton
+          child: TextButton.icon(
             onPressed: () {
               showDialog(
                 context: context,
@@ -92,13 +108,105 @@ class _HomepageHeaderState extends State<HomepageHeader> {
           ),
         ),
         IconButton(
-          onPressed: () => {
-            servicoAuth.logout(),
-            context.go('/login')
-          },
+          onPressed: () => {servicoAuth.logout(), context.go('/login')},
           icon: const Icon(Icons.exit_to_app, color: Colors.white),
         ),
-        const SizedBox(width: 8), // Margem final
+        const SizedBox(width: 8),
+      ],
+    );
+  }
+}
+
+class _HomepageHeaderMobile extends StatefulWidget {
+  const _HomepageHeaderMobile();
+
+  @override
+  State<_HomepageHeaderMobile> createState() => _HomepageHeaderMobileState();
+}
+
+class _HomepageHeaderMobileState extends State<_HomepageHeaderMobile> {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      toolbarHeight: 60.0,
+      backgroundColor: const Color.fromARGB(255, 2, 61, 138),
+      elevation: 4,
+      title: Row(
+        children: [
+          Image.asset(
+            "assets/images/logo.png",
+            width: 32,
+            height: 32,
+            color: Colors.white,
+          ),
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                "GeoQuest",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: Colors.blue[800],
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.check_circle, size: 14, color: Colors.blue[100]),
+                const SizedBox(width: 4),
+                Text(
+                  '24',
+                  style: TextStyle(
+                    color: Colors.blue[50],
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+
+        Tooltip(
+          message: 'Adicionar cache',
+          child: IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => const AddCacheModal(),
+              );
+            },
+            icon: const Icon(Icons.add_circle, color: Colors.white),
+            iconSize: 24,
+          ),
+        ),
+        Tooltip(
+          message: 'Sair',
+          child: IconButton(
+            onPressed: () {
+              servicoAuth.logout();
+              context.go('/login');
+            },
+            icon: const Icon(Icons.exit_to_app, color: Colors.white),
+            iconSize: 24,
+          ),
+        ),
       ],
     );
   }
