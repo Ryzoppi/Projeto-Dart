@@ -85,26 +85,16 @@ class _HomepageHeaderDesktop extends StatelessWidget {
             ],
           ),
         ),
+
         const SizedBox(width: 10),
 
         // Botão "Novo"
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 8),
-          decoration: BoxDecoration(
-            color: Colors.blue[800],
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: TextButton.icon(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => const AddCacheModal(),
-              );
-            },
-            icon: const Icon(Icons.add, size: 16, color: Colors.white),
-            label: const Text(
-              'Novo',
-              style: TextStyle(color: Colors.white, fontSize: 12),
+        FilledButton.icon(
+          style: FilledButton.styleFrom(
+            backgroundColor: Colors.blue[800],
+            foregroundColor: Colors.blue[100],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
           onPressed: () {

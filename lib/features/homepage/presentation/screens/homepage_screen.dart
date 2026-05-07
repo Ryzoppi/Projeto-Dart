@@ -5,7 +5,7 @@ import 'package:projeto_integrador/features/homepage/presentation/screens/homepa
 
 import 'package:projeto_integrador/features/homepage/domain/models/geocache.dart';
 
-class HomepageScreen extends StatelessWidget {
+class HomepageScreen extends StatefulWidget {
   const HomepageScreen({super.key});
 
   @override
@@ -33,7 +33,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
       longitude: -46.6333,
       badge: 'traditional',
       totalFound: 12,
-      createdAt: "12/05/2024"
+      createdAt: "12/05/2024",
     ),
     GeoCache(
       name: 'Trilha da Cachoeira',
@@ -43,12 +43,13 @@ class _HomepageScreenState extends State<HomepageScreen> {
       terrain: 4,
       duration: 'D: 3.5 / T: 4',
       favorites: 89,
-      description: 'Cache escondido em trilha de dificuldade média com bela paisagem',
+      description:
+          'Cache escondido em trilha de dificuldade média com bela paisagem',
       tip: 'Cuidado com pedras soltas na trilha',
       latitude: -23.4405,
       longitude: -46.6833,
       totalFound: 122,
-      createdAt: "12/05/2023"
+      createdAt: "12/05/2023",
     ),
     GeoCache(
       name: 'Centro Histórico',
@@ -64,7 +65,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
       latitude: -23.5605,
       longitude: -46.6233,
       totalFound: 14,
-      createdAt: "11/03/2022"
+      createdAt: "11/03/2022",
     ),
     GeoCache(
       name: 'Praça das Artes',
@@ -79,7 +80,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
       latitude: -23.5705,
       longitude: -46.6433,
       totalFound: 20,
-      createdAt: "12/08/2025"
+      createdAt: "12/08/2025",
     ),
     GeoCache(
       name: 'Praça das Artes',
@@ -94,7 +95,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
       latitude: -23.5705,
       longitude: -46.6433,
       totalFound: 20,
-      createdAt: "12/08/2025"
+      createdAt: "12/08/2025",
     ),
     GeoCache(
       name: 'Praça das Artes',
@@ -109,7 +110,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
       latitude: -23.5705,
       longitude: -46.6433,
       totalFound: 20,
-      createdAt: "12/08/2025"
+      createdAt: "12/08/2025",
     ),
   ];
 
@@ -118,8 +119,10 @@ class _HomepageScreenState extends State<HomepageScreen> {
 
     if (searchQuery.isNotEmpty) {
       result = result
-          .where((cache) =>
-              cache.name.toLowerCase().contains(searchQuery.toLowerCase()))
+          .where(
+            (cache) =>
+                cache.name.toLowerCase().contains(searchQuery.toLowerCase()),
+          )
           .toList();
     }
 
